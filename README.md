@@ -28,14 +28,14 @@ A calculator service that taxes customer operations over their budget amount.
 - [ ] Operations
   - [x] model
     - [x] only type
-    - [ ] add cost
+    - [x] add cost
   - [ ] logic
     - [x] addition
     - [x] subtraction
     - [x] multiplication
     - [x] division
     - [x] square-root
-    - [ ] random-string
+    - [x] random-string
     - [x] unknown-operation error
   - [ ] controller
     - [ ] default operations

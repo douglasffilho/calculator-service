@@ -1,6 +1,7 @@
 (ns calculator-service.logic.operations-test
   (:require [calculator-service.logic.operations :as logic.operations]
             [calculator-service.model.operation :as model.operation]
+            [clojure.string :as str]
             [clojure.test :refer :all]))
 
 (deftest execute-test
@@ -26,7 +27,10 @@
 
   (testing "Should be able to execute a square-root operation over a not quadratic number"
     (is (= 2.8284271247461903
-           (logic.operations/execute (model.operation/create-operation :square-root 8))))))
+           (logic.operations/execute (model.operation/create-operation :square-root 8)))))
+
+  (testing "Should be able to execute a random-string operation"
+    (is (false? (str/blank? (logic.operations/execute (model.operation/create-operation :random-string)))))))
 
 (deftest execute-with-errors-test
   (testing "Should throw an exception when executing a division by 0"

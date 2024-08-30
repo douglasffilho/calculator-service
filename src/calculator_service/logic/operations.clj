@@ -25,5 +25,8 @@
 (defmethod execute :square-root [operation]
   (-> operation :x Math/sqrt))
 
+(defmethod execute :random-string [_operation]
+  (str (random-uuid)))
+
 (defmethod execute :default [& _params]
   (throw (RuntimeException. "unknown-operation")))

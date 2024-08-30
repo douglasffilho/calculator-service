@@ -1,6 +1,6 @@
 (ns calculator-service.model.operation)
 
-(defrecord Operation [type x y])
+(defrecord Operation [id type x y cost])
 
 (defn create-operation
   ([type]

@@ -29,7 +29,7 @@ A calculator service that taxes customer operations over their budget amount.
   - [x] model
     - [x] only type
     - [x] add cost
-  - [ ] logic
+  - [x] logic
     - [x] addition
     - [x] subtraction
     - [x] multiplication
@@ -38,7 +38,7 @@ A calculator service that taxes customer operations over their budget amount.
     - [x] random-string
     - [x] unknown-operation error
   - [ ] controller
-    - [ ] default operations
+    - [x] default operations
     - [ ] random-string integration with external service in the Operations Controller
       - [ ] HTTP client layer to communicate with the integration
       - [ ] HTTP call to random-string generation before default logic (only executes default logic in a circuit-break case as a fallback)

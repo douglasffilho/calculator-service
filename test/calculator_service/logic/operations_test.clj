@@ -1,5 +1,6 @@
 (ns calculator-service.logic.operations-test
-  (:require [calculator-service.logic.operations :as logic.operations]
+  (:require [calculator-service.fixture.operations :as fixture.operations]
+            [calculator-service.logic.operations :as logic.operations]
             [calculator-service.model.operation :as model.operation]
             [clojure.string :as str]
             [clojure.test :refer :all]))
@@ -30,7 +31,7 @@
            (logic.operations/execute (model.operation/create-operation :square-root 8)))))
 
   (testing "Should be able to execute a random-string operation"
-    (is (false? (str/blank? (logic.operations/execute (model.operation/create-operation :random-string)))))))
+    (is (false? (str/blank? (logic.operations/execute fixture.operations/random-string-operation))))))
 
 (deftest execute-with-errors-test
   (testing "Should throw an exception when executing a division by 0"

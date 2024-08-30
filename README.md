@@ -37,11 +37,11 @@ A calculator service that taxes customer operations over their budget amount.
     - [x] square-root
     - [x] random-string
     - [x] unknown-operation error
-  - [ ] controller
+  - [x] controller
     - [x] default operations
-    - [ ] random-string integration with external service in the Operations Controller
-      - [ ] HTTP client layer to communicate with the integration
-      - [ ] HTTP call to random-string generation before default logic (only executes default logic in a circuit-break case as a fallback)
+    - [x] random-string integration with external service in the Operations Controller
+      - [x] HTTP client layer to communicate with the integration
+      - [x] HTTP call to random-string generation before default logic (only executes default logic in a circuit-break case as a fallback)
   - [ ] database migrations
 
 - [ ] Database

@@ -26,7 +26,7 @@ A calculator service that taxes customer operations over their budget amount.
 
 ## :sparkles: Features ##
 
-- [ ] Operations
+- [x] Operations
   - [x] model
     - [x] only type
     - [x] add cost

@@ -1,0 +1,16 @@
+services:
+  db:
+    image: mysql:8.3-oracle
+    container_name: database
+    restart: always
+    environment:
+      - MYSQL_DATABASE=calculator
+      - MYSQL_ROOT_PASSWORD=admin
+    ports:
+      - '3306:3306'
+    volumes:
+      - local-volume:/tmp/var/lib/mysql
+
+volumes:
+  local-volume:
+    driver: local

@@ -4,7 +4,7 @@
   <img alt="AWS Lambda Badge" src="https://img.shields.io/badge/AWS_Lambda-orange.svg" />
   <img alt="Java Language Badge" src="https://img.shields.io/badge/Java-17.x-green.svg" />
   <img alt="Clojure Language Badge" src="https://img.shields.io/badge/Clojure-1.11.x-green.svg" />
-  <img alt="MySQL Database Badge" src="https://img.shields.io/badge/MySQL-5.7.36-green.svg" />
+  <img alt="MySQL Database Badge" src="https://img.shields.io/badge/MySQL-8.3-green.svg" />
 </p>
 
 <p align="center">
@@ -14,6 +14,7 @@
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
   <a href="#mag_right-testing">Testing</a> &#xa0; | &#xa0;
+  <a href="#mag_right-migrations">Migrations</a> &#xa0; | &#xa0;
   <a href="https://github.com/douglasffilho" target="_blank">Author</a>
 </p>
 
@@ -25,7 +26,7 @@ A calculator service that taxes customer operations over their budget amount.
 
 ## :sparkles: Features ##
 
-- [ ] Operations
+- [x] Operations
   - [x] model
     - [x] only type
     - [x] add cost
@@ -42,16 +43,22 @@ A calculator service that taxes customer operations over their budget amount.
     - [x] random-string integration with external service in the Operations Controller
       - [x] HTTP client layer to communicate with the integration
       - [x] HTTP call to random-string generation before default logic (only executes default logic in a circuit-break case as a fallback)
-  - [ ] database migrations
+  - [x] database migrations
+    - [x] create
+    - [x] run
 
 - [ ] Database
-  - [ ] Create local MySQL database using docker
+  - [x] Create local MySQL database using docker
   - [ ] Create remote MySQL database using AWS RDS MySQL free tier
-  - [ ] Create migrations
+  - [x] Create migrations
+  - [x] run local database migrations
+  - [ ] run remote database migrations
 
 - [ ] Customers
   - [ ] Basic Authentication Flow (generates JWT token with expiration time)
   - [ ] database migrations
+    - [ ] create
+    - [ ] run
 
 - [ ] Records
   - [ ] Register log per operation per customer
@@ -59,6 +66,8 @@ A calculator service that taxes customer operations over their budget amount.
   - [ ] Paginated (searchable, filterable and sortable) list of Records per customer only for the authenticated customer
   - [ ] Record deletion for authenticated customer
   - [ ] database migrations
+    - [ ] create
+    - [ ] run
 
 - [ ] Lambda HTTP handlers
   - [ ] Customer
@@ -76,7 +85,7 @@ The following tools were used in this project:
 - [Java](https://www.oracle.com/br/java/technologies/downloads/#java17)
 - [Clojure](https://clojure.org/)
 - [Leiningen](https://leiningen.org/)
-- [MySQL 5.7.36](https://hub.docker.com/layers/library/mysql/5.7.36/images/sha256-398f124948bb3d5789c0ac7c004d02e6d9a3ae95aa9804d7a3b33a344ff3c9cd?context=explore)
+- [MySQL 8.3](https://hub.docker.com/layers/library/mysql/8.0-oracle/images/sha256-0cb3ab06963a548f8eebb5aca9e06a0ea86db8178030f2e12edda36143a41259?context=explore)
 
 ## :white_check_mark: Requirements ##
 
@@ -94,6 +103,22 @@ $ cd calculator-service
 
 # Install dependencies
 $ lein deps
+
+# Make local MySQL available
+$ docker compose up -d
+
+# After tests, remember removing local MySQL
+$ docker compose down -v
+```
+
+## :checkered_flag: Migrations ##
+
+```bash
+# Run migrations locally
+$ lein run migrations
+
+# Run migrations for remote(production) database specifying database through env vars
+$ MYSQL_DB_HOST=localhost MYSQL_DB_PORT=3306 MYSQL_DB_NAME=calculator MYSQL_DB_USER=root MYSQL_DB_PWD=admin lein run migrations
 ```
 
 ## :mag_right: Testing ##

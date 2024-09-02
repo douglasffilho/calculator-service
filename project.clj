@@ -4,7 +4,8 @@
   :dependencies [[clj-http "3.13.0"]
                  [com.mysql/mysql-connector-j "8.3.0"]
                  [org.clojure/clojure "1.11.1"]
-                 [org.clojure/java.jdbc "0.7.12"]]
+                 [org.clojure/java.jdbc "0.7.12"]
+                 [bcrypt-clj "0.3.3"]]
 
   :dev-dependencies [[lein-run "1.0.0"]]
 

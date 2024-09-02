@@ -55,10 +55,11 @@ A calculator service that taxes customer operations over their budget amount.
   - [ ] run remote database migrations
 
 - [ ] Customers
+  - [x] model
   - [ ] Basic Authentication Flow (generates JWT token with expiration time)
-  - [ ] database migrations
-    - [ ] create
-    - [ ] run
+  - [x] database migrations
+    - [x] create
+    - [x] run
 
 - [ ] Records
   - [ ] Register log per operation per customer

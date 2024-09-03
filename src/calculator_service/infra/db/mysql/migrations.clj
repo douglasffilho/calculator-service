@@ -1,6 +1,6 @@
 (ns calculator-service.infra.db.mysql.migrations
   (:require [bcrypt-clj.auth :refer [crypt-password]]
-            [calculator-service.infra.db.mysql.config :as db.mysql.config]
+            [calculator-service.infra.db.mysql.config :as db.config]
             [clojure.java.jdbc :as jdbc]))
 
 (defn run-migration-v1! []
@@ -16,9 +16,9 @@
         division-operation        {:type "division" :cost 15}
         square-root-operation     {:type "square-root" :cost 20}
         random-string-operation   {:type "random-string" :cost 25}]
-    (jdbc/db-do-commands db.mysql.config/connection-spec drop-operations-table-ddl)
-    (jdbc/db-do-commands db.mysql.config/connection-spec operations-table-ddl)
-    (jdbc/insert-multi! db.mysql.config/connection-spec :operations [addition-operation
+    (jdbc/db-do-commands db.config/connection-spec drop-operations-table-ddl)
+    (jdbc/db-do-commands db.config/connection-spec operations-table-ddl)
+    (jdbc/insert-multi! db.config/connection-spec :operations [addition-operation
                                                                      subtraction-operation
                                                                      multiplication-operation
                                                                      division-operation
@@ -43,9 +43,9 @@
                                                                 :balance 100)
         inactive-basic-customer  (assoc active-basic-customer :username "inactive@customer.com"
                                                               :status "inactive")]
-    (jdbc/db-do-commands db.mysql.config/connection-spec drop-customers-table-ddl)
-    (jdbc/db-do-commands db.mysql.config/connection-spec customers-table-ddl)
-    (jdbc/insert-multi! db.mysql.config/connection-spec :customers [active-premium-customer
+    (jdbc/db-do-commands db.config/connection-spec drop-customers-table-ddl)
+    (jdbc/db-do-commands db.config/connection-spec customers-table-ddl)
+    (jdbc/insert-multi! db.config/connection-spec :customers [active-premium-customer
                                                                     active-basic-customer
                                                                     inactive-basic-customer])))
 

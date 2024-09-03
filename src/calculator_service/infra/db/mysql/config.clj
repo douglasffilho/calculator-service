@@ -1,14 +1,15 @@
-(ns calculator-service.infra.db.mysql.config)
+(ns calculator-service.infra.db.mysql.config
+  (:require [calculator-service.config :as config]))
 
-(def host (or (System/getenv "MYSQL_DB_HOST") "localhost"))
+(def host (or config/db-host "localhost"))
 
-(def port (or (System/getenv "MYSQL_DB_PORT") "3306"))
+(def port (or config/db-port "3306"))
 
-(def dbname (or (System/getenv "MYSQL_DB_NAME") "calculator"))
+(def dbname (or config/db-name "calculator"))
 
-(def username (or (System/getenv "MYSQL_DB_USER") "root"))
+(def username (or config/db-username "root"))
 
-(def pwd (or (System/getenv "MYSQL_DB_PWD") "admin"))
+(def pwd (or config/db-pwd "admin"))
 
 (def connection-spec {:subprotocol "mysql"
                       :subname     (str "//" host ":" port "/" dbname)

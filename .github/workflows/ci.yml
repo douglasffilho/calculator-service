@@ -7,15 +7,18 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install dependencies
-        run: lein deps
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run Local MySQL for Tests
+        run: docker compose up -d
+      - name: Build
+        run: lein deps
+      - name: Run Migrations
+        run: lein run migrations
       - name: Run tests
         run: lein test
+      - name: Stop MySQL
+        run: docker compose down -v

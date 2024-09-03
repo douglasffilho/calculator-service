@@ -19,6 +19,6 @@ jobs:
       - name: Run Migrations
         run: lein run migrations
       - name: Run tests
-        run: lein tests
+        run: lein test
       - name: Stop MySQL
         run: docker compose down -v

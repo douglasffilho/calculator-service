@@ -12,15 +12,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Run Local MySQL for Tests
         run: docker compose up -d
-
+      - name: Wait MySQL Server
+        run: sleep 10s
+        shell: bash
       - name: Build
         run: lein deps
-
       - name: Run tests
         run: lein test
-
       - name: Stop MySQL
         run: docker compose down -v

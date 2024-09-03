@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run Local MySQL for Tests
-        run: docker-compose up -d
+        run: docker compose up -d
       - name: Build
         run: lein deps
       - name: Run Migrations
@@ -21,4 +21,4 @@ jobs:
       - name: Run tests
         run: lein tests
       - name: Stop MySQL
-        run: docker-compose down -v
+        run: docker compose down -v

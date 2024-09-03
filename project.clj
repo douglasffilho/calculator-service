@@ -14,4 +14,6 @@
 
   :repl-options {:init-ns calculator-service.infra.db.mysql.migrations}
 
-  :run-aliases {:migrations [calculator-service.infra.db.mysql.migrations]})
+  :run-aliases {:migrations [calculator-service.infra.db.mysql.migrations]}
+
+  :aliases {"test" ["do" ["run" "migrations"] ["test"]]})
